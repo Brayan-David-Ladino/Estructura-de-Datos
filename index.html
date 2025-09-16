@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Elementos Quirúrgicos en Colombia</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>  
+  <div class="container">
+    <h1>Elementos Quirúrgicos en Colombia</h1>
+    <p>Seleccione el tipo de cirugía para listar los elementos quirúrgicos recomendados para el paciente.</p>
+    <label for="tipoCirugia">Tipo de Cirugía:</label>
+    <select id="tipoCirugia">
+      <option value="">-- Seleccione --</option>
+    </select>
+    <h2>Elementos Quirúrgicos Recomendados</h2>
+    <table id="tablaElementos">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Categoría</th>
+          <th>Condiciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Se llenará con JS -->
+      </tbody>
+    </table>
+    <div class="chart-container">
+      <canvas id="graficoCategorias"></canvas>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
