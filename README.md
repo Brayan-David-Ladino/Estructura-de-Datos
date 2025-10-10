@@ -26,3 +26,5 @@
 * *Tablas dinámicas*: ejemplo (Cirugía ortopédica → prótesis de titanio + tornillos + guantes sin látex).
 * *Gráficas*: consumo de materiales por tipo de cirugía.
 * *Alertas*: falta de stock o incompatibilidad con paciente (ejemplo: “el paciente es alérgico al látex, se necesitan guantes de nitrilo”)
+### Link de la pagina:
+https://brayan-david-ladino.github.io/Estructura-de-Datos/
