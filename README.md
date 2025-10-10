@@ -1,5 +1,5 @@
 # Estructura-de-Datos
-## 📌 Datos de entrada necesarios (Módulo 2)
+## Datos de entrada necesarios (Módulo 2)
 ### 1. Datos del paciente (heredados del módulo 1)
 * Edad, sexo, peso, talla (IMC).
 * Condiciones médicas (ej. hipertensión, diabetes, etc.).
@@ -21,7 +21,7 @@
 * Inventario disponible del hospital.
 * Cantidad de elementos necesarios según número de profesionales en quirófano.
 * Costos estimados por procedimiento.
-## 📊 Posibles salidas
+## Posibles salidas
 * *Lista personalizada de materiales* según cirugía + paciente.
 * *Tablas dinámicas*: ejemplo (Cirugía ortopédica → prótesis de titanio + tornillos + guantes sin látex).
 * *Gráficas*: consumo de materiales por tipo de cirugía.
