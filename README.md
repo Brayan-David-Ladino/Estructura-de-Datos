@@ -74,5 +74,22 @@ También se pretende ayudar con la gestión del inventario y detectar posibles a
 | *Chart.js* | Librería para crear las gráficas |
 | *GitHub Pages* | Publicación del sitio web |
 
-### Link de la pagina:
-https://brayan-david-ladino.github.io/Estructura-de-Datos/
+## Resultados Esperados
+
+- Ayudar al personal médico a planear mejor las cirugías.  
+- Mostrar datos claros y visuales sobre los materiales usados.  
+- Cumplir con la normatividad sanitaria colombiana.  
+- Tener una interfaz fácil de usar e intuitiva.
+
+
+
+##  Enlace del Proyecto
+
+[Ver página en GitHub Pages](https://brayan-david-ladino.github.io/Estructura-de-Datos/)
+
+
+
+##  Conclusión
+
+El proyecto demuestra cómo la programación y las bases de datos pueden ayudar en el área médica.  
+Con este sistema se puede automatizar la gestión de materiales quirúrgicos, ahorrar tiempo y mejorar la seguridad del paciente.
