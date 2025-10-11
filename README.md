@@ -71,7 +71,7 @@ También se pretende ayudar con la gestión del inventario y detectar posibles a
 | *HTML* | Estructura de la página |
 | *CSS* | Diseño y estilos visuales |
 | *JavaScript* | Lógica, manejo de datos y gráficos |
-| *Chart.js* | Librería para crear las gráficas |
+| *.js* | Librería para crear las gráficas |
 | *GitHub Pages* | Publicación del sitio web |
 
 ## Resultados Esperados
