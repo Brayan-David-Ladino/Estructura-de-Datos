@@ -1,5 +1,4 @@
-// Datos de ejemplo
-// Elementos quirúrgicos usados en Colombia (ficticios)
+// Datos de elementos quirúrgicos
 const elementosQuirurgicos = [
   { id: 1, nombre: "Bisturí", categoria: "Instrumento Cortante", condiciones: "Esterilizado, uso único" },
   { id: 2, nombre: "Pinzas", categoria: "Instrumento de Sujeción", condiciones: "Esterilizado" },
@@ -12,7 +11,8 @@ const elementosQuirurgicos = [
   { id: 9, nombre: "Aguja Hipodérmica", categoria: "Instrumento de Inyección", condiciones: "Uso único" },
   { id: 10, nombre: "Tijeras", categoria: "Instrumento Cortante", condiciones: "Esterilizado" }
 ];
-// Tipos de cirugía (ficticios)
+
+// Tipos de cirugía
 const tiposCirugia = [
   { id: "general", nombre: "Cirugía General" },
   { id: "ortopedica", nombre: "Cirugía Ortopédica" },
@@ -21,7 +21,7 @@ const tiposCirugia = [
   { id: "plastica", nombre: "Cirugía Plástica" }
 ];
 
-// Relación tipo cirugía - elementos recomendados (ids de elementos)
+// Relación cirugía-elementos
 const elementosPorCirugia = {
   general: [1, 2, 3, 4, 5, 8, 9, 10],
   ortopedica: [1, 2, 3, 4, 6, 7, 8, 10],
@@ -29,12 +29,26 @@ const elementosPorCirugia = {
   neuro: [1, 2, 3, 4, 5, 7, 8],
   plastica: [1, 2, 3, 4, 5, 6, 8, 10]
 };
-// Referencias DOM
+
+// Datos de medicamentos usados en Colombia
+const medicamentos = [
+  { nombre: "Acetaminofén", uso: "Analgesia y fiebre", presentacion: "Tabletas / Jarabe" },
+  { nombre: "Amoxicilina", uso: "Antibiótico", presentacion: "Cápsulas / Suspensión" },
+  { nombre: "Ibuprofeno", uso: "Antiinflamatorio", presentacion: "Tabletas / Gotas" },
+  { nombre: "Omeprazol", uso: "Protector gástrico", presentacion: "Cápsulas" },
+  { nombre: "Loratadina", uso: "Antialérgico", presentacion: "Tabletas" },
+  { nombre: "Metformina", uso: "Antidiabético", presentacion: "Tabletas" },
+  { nombre: "Salbutamol", uso: "Broncodilatador", presentacion: "Inhalador" }
+];
+
+// DOM
 const selectCirugia = document.getElementById("tipoCirugia");
 const tbody = document.querySelector("#tablaElementos tbody");
+const medicamentosBody = document.querySelector("#tablaMedicamentos tbody");
 const ctx = document.getElementById("graficoCategorias").getContext("2d");
 let chart;
-// Función para cargar opciones de tipo de cirugía
+
+// Cargar tipos de cirugía
 function cargarOpcionesCirugia() {
   tiposCirugia.forEach(c => {
     const option = document.createElement("option");
@@ -43,17 +57,20 @@ function cargarOpcionesCirugia() {
     selectCirugia.appendChild(option);
   });
 }
-// Función para mostrar elementos según cirugía
+
+// Mostrar elementos por cirugía
 function mostrarElementos(cirugiaId) {
   tbody.innerHTML = "";
+
   if (!cirugiaId || !elementosPorCirugia[cirugiaId]) {
     tbody.innerHTML = "<tr><td colspan='3'>Seleccione un tipo de cirugía válido.</td></tr>";
     actualizarGrafico([]);
     return;
   }
-  const idsElementos = elementosPorCirugia[cirugiaId];
-  const elementos = elementosQuirurgicos.filter(e => idsElementos.includes(e.id));
-  // Mostrar en tabla
+
+  const ids = elementosPorCirugia[cirugiaId];
+  const elementos = elementosQuirurgicos.filter(e => ids.includes(e.id));
+
   elementos.forEach(e => {
     const tr = document.createElement("tr");
     tr.innerHTML = `
@@ -64,50 +81,51 @@ function mostrarElementos(cirugiaId) {
     tbody.appendChild(tr);
   });
 
-  // Actualizar gráfico de categorías
   const categorias = elementos.map(e => e.categoria);
   actualizarGrafico(categorias);
 }
 
-// Función para actualizar gráfico de barras para categorías
+// Gráfico categorías
 function actualizarGrafico(categorias) {
-  // Contar ocurrencias por categoría
   const conteo = {};
-  categorias.forEach(cat => {
-    conteo[cat] = (conteo[cat] || 0) + 1;
-  });
+  categorias.forEach(cat => conteo[cat] = (conteo[cat] || 0) + 1);
+
   const labels = Object.keys(conteo);
   const data = Object.values(conteo);
-  if (chart) {
-    chart.destroy();
-  }
+
+  if (chart) chart.destroy();
 
   chart = new Chart(ctx, {
     type: "bar",
     data: {
       labels,
       datasets: [{
-        label: "Cantidad de elementos por categoría",
+        label: "Cantidad por categoría",
         data,
         backgroundColor: "rgba(41, 128, 185, 0.7)"
       }]
     },
-    options: {
-      responsive: true,
-      scales: {
-        y: {
-          beginAtZero: true,
-          precision: 0
-        }
-      }
-    }
+    options: { responsive: true }
+  });
+}
+
+// Cargar medicamentos
+function cargarMedicamentos() {
+  medicamentos.forEach(m => {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td>${m.nombre}</td>
+      <td>${m.uso}</td>
+      <td>${m.presentacion}</td>
+    `;
+    medicamentosBody.appendChild(tr);
   });
 }
 
 // Eventos
-selectCirugia.addEventListener("change", e => {
-  mostrarElementos(e.target.value);
-});
-// Inicialización
+selectCirugia.addEventListener("change", e => mostrarElementos(e.target.value));
+
+// Inicializar
 cargarOpcionesCirugia();
+cargarMedicamentos();
 mostrarElementos("");
