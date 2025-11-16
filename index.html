@@ -3,18 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Elementos Quirúrgicos en Colombia</title>
+  <title>Elementos Quirúrgicos y Medicamentos en Colombia</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>  
   <div class="container">
     <h1>Elementos Quirúrgicos en Colombia</h1>
-    <p>Seleccione el tipo de cirugía para listar los elementos quirúrgicos recomendados para el paciente.</p>
+    <p>Seleccione el tipo de cirugía para listar los elementos quirúrgicos recomendados.</p>
+
     <label for="tipoCirugia">Tipo de Cirugía:</label>
     <select id="tipoCirugia">
       <option value="">-- Seleccione --</option>
     </select>
+
     <h2>Elementos Quirúrgicos Recomendados</h2>
+
     <table id="tablaElementos">
       <thead>
         <tr>
@@ -23,15 +27,30 @@
           <th>Condiciones</th>
         </tr>
       </thead>
-      <tbody>
-        <!-- Se llenará con JS -->
-      </tbody>
+      <tbody></tbody>
     </table>
+
     <div class="chart-container">
       <canvas id="graficoCategorias"></canvas>
     </div>
+
+    <hr>
+
+    <h2>Medicamentos Utilizados en Colombia</h2>
+    <table id="tablaMedicamentos">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Uso</th>
+          <th>Presentación</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
   </div>
+
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="app.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
